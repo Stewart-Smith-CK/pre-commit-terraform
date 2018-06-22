@@ -16,7 +16,7 @@ for path_uniq in $(echo "${paths[*]}" | tr ' ' '\n' | sort -u); do
 
   pushd "$path_uniq" > /dev/null
   if [[ -n "$(find . -maxdepth 1 -name '*.tf' -print -quit)" ]] ; then
-    if ! terraform validate -check-variables=false ; then
+    if ! terragrunt validate -check-variables=false ; then
       echo
       echo "Failed path: $path_uniq"
       echo "================================"
